@@ -1,0 +1,27 @@
+query {
+	cheeses: getCheeseList {
+		total
+		items {
+			_contentTypeName
+			_enabledAt
+			name
+			characteristics {
+	      aged
+	      covering
+	      flavors
+	      milk
+	      rennetType
+	      standardsAndProcessing
+	      style
+	      texture
+	    }
+			labelOrPhoto {
+				path
+			}
+			source
+			agents {
+				name
+			}
+		}
+	}
+}

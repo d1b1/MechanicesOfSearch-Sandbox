@@ -1,0 +1,19 @@
+query {
+	makers: getAgentsList {
+		total
+		items {
+			_contentTypeName
+			_enabledAt
+			name
+			logo {
+				path
+			}
+			type
+			operators
+			address {
+			  city
+				state
+			}
+		}
+	}
+}

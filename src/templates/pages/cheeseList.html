@@ -1,0 +1,63 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+	<br>
+	<table class="table is-hoverable is-fullwidth">
+		<thead>
+			<tr>
+				<td></td>
+				<td>Name</td>
+				<td>Milk</td>
+				<td>Rind</td>
+				<td>Texture</td>
+				<td>Misc</td>
+				<td>Source</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cheese in cheeses.items %}
+				<tr>
+					<td width="5%">
+						{% if cheese.labelOrPhoto %}
+						<img src="{{ cheese.labelOrPhoto.path | image }}" class="image is-32x32">
+						{% else %}
+						<img src="https://via.placeholder.com/50?text= " class="image is-32x32">
+						{% endif %}
+					</td>
+					<td width="30%">
+						<b>{{ cheese.name }}</b>
+						<br>
+						{% for value in cheese.agents %}
+						 <span class="tag is-light">{{ value.name }}</span>
+						{% endfor %}
+					</td>
+					<td>
+						{% for milk in cheese.characteristics.milk %}
+						 <span class="tag is-light">{{ milk | title }}</span>
+						{% endfor %}
+					</td>
+					<td>
+						{% for value in cheese.characteristics.covering %}
+						 <span class="tag is-light">{{ value | title }}</span>
+						{% endfor %}
+					</td>
+					<td>
+						{% for value in cheese.characteristics.texture %}
+						 <span class="tag is-light">{{ value | title }}</span>
+						{% endfor %}
+					</td>
+					<td>
+						{% for value in cheese.characteristics.standardsAndProcessing %}
+						 <span class="tag is-light">{{ value | title }}</span>
+						{% endfor %}
+					</td>
+					<td>{{ cheese.source }}</td>
+					<td>
+						<a href="/{{ cheese | route('cheeses') }}">View</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

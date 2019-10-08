@@ -1,0 +1,30 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+
+	<br>
+	<table class="table is-striped is-hoverable is-fullwidth">
+		<tbody>
+			{% for maker in makers.items %}
+				<tr>
+					<td width="5%">
+						{% if maker.logo %}
+						<img src="{{ maker.logo.path | image }}" class="image is-32x32">
+						{% else %}
+						<img src="https://via.placeholder.com/50?text= " class="image is-32x32">
+						{% endif %}
+					</td>
+					<td>
+						<b>{{ maker.name }}</b>
+						<br>
+						{% for type in maker.type %}
+						 <span class="tag is-light">{{ type }}</span>
+						{% endfor %}
+					</td>
+					<td>{{ maker.operators }}</td>
+					<td>{{ maker.address.city }}, {{ maker.address.state }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

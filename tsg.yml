@@ -1,0 +1,32 @@
+templatePath: src/templates
+staticPath: static
+buildPath: build
+
+routes:
+  homepage:
+    path: /
+    template: pages/index.html
+
+  cheeseList:
+    path: /cheeses
+    template: pages/cheeseList.html
+    context: data/cheese.graphql
+
+  cheese:
+    path: /cheese/:title/
+    template: pages/cheese.html
+    context: data/cheeseOne.graphql
+
+  makers:
+    path: /makers
+    template: pages/makers.html
+    context: data/agent.graphql
+
+  tools:
+    path: /tools
+    template: pages/tools.html
+
+  search:
+    path: /search
+    context: data/cheese.graphql
+    template: pages/search.html
